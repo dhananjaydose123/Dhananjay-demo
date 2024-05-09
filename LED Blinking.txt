@@ -1,0 +1,60 @@
+#include <xc.h>             
+//Configuration bit settings 
+#pragma config OSC = HS                             
+#pragma config WDT = OFF    
+#pragma config LVP = OFF    
+#pragma config PBADEN = OFF   
+//Function Prototypes 
+void msdelay (unsigned int time);                  
+//Start of Program Code 
+void main()     
+{ 
+INTCON2bits.RBPU=0;      
+ADCON1 = 0x0F;   
+TRISA = 0x00;    
+TRISB = 0x00;    
+TRISC = 0x00;    
+TRISD = 0x00;    
+//Include Controller specific .h 
+//Oscillator Selection 
+//Disable Watchdog timer 
+//Disable Low Voltage Programming 
+//Disable PORTB Analog inputs 
+//Function for delay 
+//Main Program 
+//To Activate the internal pull on PORTB 
+//To disable the all analog inputs  
+//To configure PORTA  as output 
+//To configure PORTB  as output 
+//To configure PORTC  as output 
+//To configure PORTD  as output  
+ TRISE = 0x00;    //To configure PORTE  as output 
+ while (1)    //While loop for repeated operation 
+ { 
+  PORTA = 0xAA; 
+  PORTB = 0xAA; 
+  PORTC = 0xAA; 
+  PORTD = 0xAA; 
+  PORTE = 0xAA; 
+   
+  msdelay(200); 
+ 
+  PORTA = 0x55; 
+  PORTB = 0x55; 
+  PORTC = 0x55; 
+  PORTD = 0x55; 
+  PORTE = 0x55; 
+   
+  msdelay(200); 
+    
+ } 
+}        //End of the Program 
+ 
+//Function Definitions 
+void msdelay (unsigned int time)   //Function for delay 
+{ 
+unsigned int i, j; 
+for (i = 0; i < time; i++) 
+for (j = 0; j < 710; j++);                   
+MPLAB 
+}
